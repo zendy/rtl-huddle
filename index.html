@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>How To Git</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/blood.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2>Use screen instead of destructuring render</h2>
+
+					<pre>
+						<code>
+	import { screen } from '@testing-library/react'
+
+	screen.getByRole('link', {name: 'Profile'})
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Use the right query</h2>
+
+					<pre>
+						<code>
+	screen.getByRole()
+	screen.ByLabelText()
+	screen.ByText() 
+	screen.ByAltText() 
+	screen.ByTitle()
+	screen.ByTestId()
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Use findBy if you need to await for something</h2>
+
+					<pre>
+						<code>
+	await screen.findByRole('dialog')
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Selectively use act</h2>
+
+					<pre>
+						<code>
+	const submitButton = screen.getByRole('button', {name: 'Submit'})
+	fireEvent.click(submitButton)
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>Notes</h2>
+
+					<ul>
+						<li><a href="https://kentcdodds.com/blog/common-mistakes-with-react-testing-library" target="_blank">Common mistakes with React Testing Library</a></li>
+					</ul>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
